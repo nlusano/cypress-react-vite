@@ -1,10 +1,10 @@
 import {
   createStateHook,
   createActionsHook,
-  createEffectsHook,
   createReactionHook,
 } from "overmind-react";
 import { state } from "./state";
+import { IContext } from "overmind";
 import * as actions from "./actions";
 
 export const config = {
@@ -12,7 +12,11 @@ export const config = {
   actions,
 };
 
-export const useAppState = createStateHook();
-export const useActions = createActionsHook();
-export const useEffects = createEffectsHook();
-export const useReaction = createReactionHook();
+export type Context = IContext<{
+  state: typeof config.state;
+  actions: typeof config.actions;
+}>;
+
+export const useAppState = createStateHook<Context>();
+export const useActions = createActionsHook<Context>();
+export const useReaction = createReactionHook<Context>();
