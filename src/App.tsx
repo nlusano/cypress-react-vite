@@ -1,14 +1,16 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import { CounterOvermind } from "./components/CounterOvermind";
 import "./App.css";
 
-function App() {
+const App: React.FC = () => {
   const [count, setCount] = useState(0);
 
   return (
     <>
       <div>
+        <CounterOvermind />
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -19,7 +21,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button
-          data-cy="increment"
+          data-cy="increment-count"
           onClick={() => setCount((count) => count + 1)}
         >
           count is {count}
@@ -33,6 +35,6 @@ function App() {
       </p>
     </>
   );
-}
+};
 
 export default App;
